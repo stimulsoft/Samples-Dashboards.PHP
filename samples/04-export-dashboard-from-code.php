@@ -44,11 +44,22 @@ require_once '../stimulsoft/helper.php';
 				Stimulsoft.System.StiObject.saveAs(data, fileName + ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 			}, Stimulsoft.Report.StiExportFormat.Excel2007);
 		}
+		
+		// Exporting dashboard to HTML format and saving to a file
+		// Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_engine_export_from_code.htm
+		function exportToHtml() {
+			dashboard.exportDocumentAsync(function (data) {
+				// Saving data to a file
+				Stimulsoft.System.StiObject.saveAs(data, fileName + ".html", "text/html");
+			}, Stimulsoft.Report.StiExportFormat.Html);
+		}
 	</script>
 </head>
 <body>
 	<button onclick="exportToPdf();">Export Dashboard to PDF</button>
 	<br /><br />
 	<button onclick="exportToExcel();">Export Dashboard to Excel</button>
+	<br /><br />
+	<button onclick="exportToHtml();">Export Dashboard to HTML</button>
 </body>
 </html>
