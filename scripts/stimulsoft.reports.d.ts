@@ -1,7 +1,7 @@
 /*
 Stimulsoft.Reports.JS
 Version: 2021.4.1
-Build date: 2021.09.27
+Build date: 2021.10.04
 License: https://www.stimulsoft.com/en/licensing/reports
 */
 declare namespace Stimulsoft.System {
@@ -465,6 +465,7 @@ declare namespace Stimulsoft.System {
         regexIndexOf(regex: RegExp, startpos: number): number;
         regexLastIndexOf(regex: RegExp, startpos: number): number;
         split(...separators: string[]): string[];
+        toLowerFirst(): string;
         getType(): Stimulsoft.System.Type;
         getTypeName(): string;
         getNetTypeName(): string;
@@ -1789,7 +1790,7 @@ declare namespace Stimulsoft.System.Collections {
         insert(index: number, item: T): void;
         getKeys(): string[];
         getByIndex(index: number, keys?: string[]): T;
-        setByIndex(index: number, item: T): void;
+        setByIndex(index: number, item: T, keys?: string[]): void;
         removeByIndex(index: number): List<T>;
         copyTo(array: any[], index?: number): void;
         clear(): void;
@@ -5803,6 +5804,7 @@ declare namespace Stimulsoft.Base.Localization {
                 BlankDashboard: string;
                 BlankForm: string;
                 BlankReport: string;
+                BlankScreen: string;
                 Default: string;
                 DefaultScriptMode: string;
                 Drawing: string;
@@ -9294,6 +9296,7 @@ declare namespace Stimulsoft.Base.Localization {
                 BlankDashboard: string;
                 BlankForm: string;
                 BlankReport: string;
+                BlankScreen: string;
                 ButtonBack: string;
                 ButtonCancel: string;
                 ButtonFinish: string;
@@ -10613,6 +10616,7 @@ declare namespace Stimulsoft.Base {
     }
 }
 declare namespace Stimulsoft.Base {
+    import List = Stimulsoft.System.Collections.List;
     import DataTable = Stimulsoft.System.Data.DataTable;
     import Type = Stimulsoft.System.Type;
     class StiODataHelper {
@@ -10632,6 +10636,7 @@ declare namespace Stimulsoft.Base {
         retrieveSchema(): StiDataSchema;
         fillDataTable(table: DataTable, query: string): void;
         testConnection(): StiTestConnectionResult;
+        getColumns(collectionName: string): List<StiDataColumnSchema>;
         static getNetType(dbType: string): Type;
         static getBearerAccessToken(url: string, userName: string, password: string, clientId: string): string;
         private getDefaultWebClient;
@@ -17392,22 +17397,22 @@ declare namespace Stimulsoft.Report.Components {
         get priority(): number;
         protected getComponentType(): StiComponentType;
         private static eventBeginRender;
-        protected onBeginRender(): void;
+        onBeginRender: Function;
         invokeBeginRender(): void;
         get beginRenderEvent(): StiBeginRenderEvent;
         set beginRenderEvent(value: StiBeginRenderEvent);
         private static eventRendering;
-        protected onRendering(): void;
+        onRendering: Function;
         invokeRendering(): void;
         get renderingEvent(): StiRenderingEvent;
         set renderingEvent(value: StiRenderingEvent);
         private static eventEndRender;
-        protected onEndRender(): void;
+        onEndRender: Function;
         invokeEndRender(): void;
         get endRenderEvent(): StiEndRenderEvent;
         set endRenderEvent(value: StiEndRenderEvent);
         private static eventGetCollapsed;
-        protected onGetCollapsed(e: StiValueEventArgs): void;
+        onGetCollapsed: Function;
         invokeGetCollapsed(e: StiValueEventArgs): void;
         get getCollapsedEvent(): StiGetCollapsedEvent;
         set getCollapsedEvent(value: StiGetCollapsedEvent);
@@ -24841,13 +24846,12 @@ declare namespace Stimulsoft.Report.Dictionary {
     }
 }
 declare namespace Stimulsoft.Report.Engine {
-    import EventArgs = Stimulsoft.System.EventArgs;
     import Hashtable = Stimulsoft.System.Collections.Hashtable;
     import StiPage = Stimulsoft.Report.Components.StiPage;
     class StiRenderProvider {
         static renderAsync(report: StiReport, state: StiRenderState): Promise<void>;
         static render(report: StiReport, state: StiRenderState): void;
-        static StiRenderProviderV2_AddAnchor_Rendering(sender: any, e: EventArgs): void;
+        private static StiRenderProvider_AddAnchor_Rendering;
         static connectToDataAsync(report: StiReport): Promise<void>;
         static connectToData(report: StiReport): void;
         private static disconnectFromData;
@@ -35275,9 +35279,9 @@ declare namespace Stimulsoft.Report.Dashboard {
         addNewKeyMeter(): IStiMeter;
     }
 }
-import StiJson = Stimulsoft.Base.StiJson;
 declare namespace Stimulsoft.Report.Dashboard {
     import List = Stimulsoft.System.Collections.List;
+    import StiJson = Stimulsoft.Base.StiJson;
     let IStiUserViewStates: System.Interface<IStiUserViewStates>;
     let ImplementsIStiUserViewStates: any[];
     interface IStiUserViewStates {
@@ -38581,6 +38585,7 @@ declare namespace Stimulsoft.Report.Dictionary {
         connectDataSourceToData(dictionary: StiDictionary, dataSource: StiSqlSource, loadData: boolean): void;
         testConnectionAsync(report: StiReport, connectionString: string): StiPromise<string>;
         retrieveSchemaAsync(report: StiReport, dataSource: StiSqlSource, connectionString: string, queryString?: string): StiPromise<StiDataSchema>;
+        getColumnsFromDataAsync(data: StiData, dataSource: StiSqlSource, connectionString: string): StiPromise<StiDataColumnsCollection>;
     }
 }
 declare namespace Stimulsoft.Report.Dictionary {
@@ -42385,6 +42390,7 @@ declare namespace Stimulsoft.Report.Export {
     import IStiChart = Stimulsoft.Report.Chart.IStiChart;
     import IStiComponent = Stimulsoft.Report.Components.IStiComponent;
     class StiHtmlExportService extends StiExportService {
+        private storedCulture;
         renderedPagesCount: number;
         currentPassNumber: number;
         maximumPassNumber: number;
@@ -43619,6 +43625,7 @@ declare namespace Stimulsoft.Report.Maps.Helpers {
     }
 }
 declare namespace Stimulsoft.Report.Helpers {
+    import IStiReport = Stimulsoft.Base.IStiReport;
     import List = Stimulsoft.System.Collections.List;
     import IStiMapKeyHelper = Stimulsoft.Base.Map.IStiMapKeyHelper;
     class StiMapKeyHelper implements IStiMapKeyHelper {
@@ -43626,7 +43633,7 @@ declare namespace Stimulsoft.Report.Helpers {
         private static getMapIdents2;
         getNameFromIsoAlpha2(alpha2: string, mapId?: string, report?: StiReport): string;
         getNameFromIsoAlpha3(alpha3: string, mapId?: string, report?: StiReport): string;
-        normalizeName(name: string, mapId?: string, report?: StiReport): string;
+        normalizeName(name: string, mapId?: string, report?: IStiReport): string;
         getIsoAlpha2FromName(name: string, mapId?: string, report?: StiReport): string;
         getIsoAlpha3FromName(name: string, mapId?: string, report?: StiReport): string;
         convertMapKeysToIsoAlpha2(mapKeys: List<string>, mapId: string, report?: StiReport): List<string>;
@@ -51609,14 +51616,10 @@ declare namespace Stimulsoft.Report.Chart {
     import Color = Stimulsoft.System.Drawing.Color;
     import RectangleD = Stimulsoft.System.Drawing.Rectangle;
     class StiFunnelSeriesElementGeom extends StiSeriesElementGeom {
-        private _path;
-        get path(): StiSegmentGeom[];
-        private _borderColor;
-        get borderColor(): Color;
-        private _brush;
-        get brush(): StiBrush;
-        private _beginTime;
-        get beginTime(): TimeSpan;
+        path: StiSegmentGeom[];
+        borderColor: Color;
+        brush: StiBrush;
+        beginTime: TimeSpan;
         draw(context: StiContext): void;
         constructor(areaGeom: StiAreaGeom, value: number, index: number, series: IStiSeries, clientRectangle: RectangleD, brush: StiBrush, borderColor: Color, path: StiSegmentGeom[], beginTime: TimeSpan);
     }
@@ -59113,11 +59116,6 @@ declare namespace Stimulsoft.Blockly.StiBlocks.Objects {
         evaluate(context: Context): any;
     }
 }
-declare namespace Stimulsoft.Blockly.Extensions {
-    class StringExt extends String {
-        static toLowerFirst(text: string): string;
-    }
-}
 declare namespace Stimulsoft.Blockly.StiBlocks.Objects {
     import Context = Stimulsoft.Blockly.Model.Context;
     import IronBlock = Stimulsoft.Blockly.Model.IronBlock;
@@ -62634,6 +62632,7 @@ declare namespace Stimulsoft.Dashboard.Components.Gauge {
 }
 declare namespace Stimulsoft.Dashboard.Components.Gauge {
     import XmlNode = Stimulsoft.System.Xml.XmlNode;
+    import StiJson = Stimulsoft.Base.StiJson;
     import StiJsonSaveMode = Stimulsoft.Base.StiJsonSaveMode;
     import StiPlacement = Stimulsoft.Report.Gauge.StiPlacement;
     import IStiGaugeTarget = Stimulsoft.Report.Dashboard.IStiGaugeTarget;
@@ -64703,6 +64702,7 @@ declare namespace Stimulsoft.Dashboard.Visuals.Indicator {
     import StiContext = Stimulsoft.Base.Context.StiContext;
     import Rectangle = Stimulsoft.System.Drawing.Rectangle;
     class StiIndicatorVisual extends StiVisual {
+        private indent;
         private minSide;
         iterations: List<StiIndicatorIteration>;
         element: StiIndicatorElement;
@@ -68318,12 +68318,16 @@ declare namespace Stimulsoft.Report.Check {
                 ConvertNulls: string;
                 EndRenderEvent: string;
                 EngineVersion: string;
+                ExportingEvent: string;
+                ExportedEvent: string;
                 GlobalizationStrings: string;
                 NumberOfPass: string;
                 ParametersOrientation: string;
                 PreviewMode: string;
                 PreviewSettings: string;
                 PrinterSettings: string;
+                PrintingEvent: string;
+                PrintedEvent: string;
                 ReferencedAssemblies: string;
                 RenderingEvent: string;
                 ReportAlias: string;
