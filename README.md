@@ -1,4 +1,4 @@
-# PHP-JavaScript for Stimulsoft Dashboards.PHP
+# PHP JavaScript samples for Stimulsoft Dashboards.PHP
 
 #### This repository contains the source code of the examples of usage Stimulsoft Dashboards.PHP analytics tool in the PHP applications, using HTML/PHP code and JavaScript components.
 
