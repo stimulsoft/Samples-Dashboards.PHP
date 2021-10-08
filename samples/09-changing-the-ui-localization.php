@@ -17,6 +17,9 @@ require_once '../stimulsoft/helper.php';
 	<script src="../scripts/stimulsoft.viewer.js" type="text/javascript"></script>
 	<script src="../scripts/stimulsoft.designer.js" type="text/javascript"></script>
 	
+	<!-- Stimulsoft Blockly editor for JS Designer -->
+    <script src="../scripts/stimulsoft.blockly.js" type="text/javascript"></script>
+	
 	<?php
 		// Creating the default events handler
 		// Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_engine_php_handler.htm
