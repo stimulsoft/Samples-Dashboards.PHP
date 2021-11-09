@@ -1,7 +1,7 @@
 /*
 Stimulsoft.Reports.JS
-Version: 2021.4.1
-Build date: 2021.10.04
+Version: 2021.4.3
+Build date: 2021.11.04
 License: https://www.stimulsoft.com/en/licensing/reports
 */
 declare namespace Stimulsoft.System {
@@ -3608,8 +3608,10 @@ declare namespace Stimulsoft.System.Text {
         private static CodePageNoSymbol;
         private static CodePageUnicode;
         private static CodePageBigEndian;
+        private static CodePageWindows1250;
         private static CodePageWindows1251;
         private static CodePageWindows1252;
+        private static CodePageWindows1256;
         private static CodePageMacGB2312;
         private static CodePageGB2312;
         private static CodePageMacKorean;
@@ -3625,7 +3627,7 @@ declare namespace Stimulsoft.System.Text {
         private static EUCCN;
         private static EUCKR;
         private static CodePageASCII;
-        private static ISO_8859_1;
+        private static CodePageISO_8859_1;
         private static ISCIIAssemese;
         private static ISCIIBengali;
         private static ISCIIDevanagari;
@@ -3651,17 +3653,29 @@ declare namespace Stimulsoft.System.Text {
         static UTF32: Encoding;
         static UTF7: Encoding;
         static UTF8: Encoding;
+        static Windows1250: Encoding;
         static Windows1251: Encoding;
+        static Windows1252: Encoding;
+        static Windows1256: Encoding;
+        static ISO_8859_1: Encoding;
+        private static _windows_1250;
         private static _windows_1251;
+        private static _windows_1252;
+        private static _windows_1256;
+        private static charToCodepageList;
         private _webName;
         get webName(): string;
         private _encodingName;
         get encodingName(): string;
+        private _codepage;
+        get codepage(): number;
         getBytes(str: string): number[];
         getString(bytes: number[] | Uint8Array): string;
         static getEncoding(codepage: number): Encoding;
         private static fromCodePageToUnicode;
-        constructor(name: string, webName?: string);
+        private static fromUnicodeToCodePage;
+        private static fillCodepage;
+        constructor(name: string, codepage: number, webName?: string);
     }
 }
 declare namespace Stimulsoft.System.Text {
@@ -4964,6 +4978,7 @@ declare namespace Stimulsoft.Base.Localization {
                 StiReportTitleBand: string;
                 StiRichText: string;
                 StiRoundedRectanglePrimitive: string;
+                StiScreen: string;
                 StiShape: string;
                 StiSparkline: string;
                 StiSubReport: string;
@@ -5537,6 +5552,7 @@ declare namespace Stimulsoft.Base.Localization {
                 AssignExpression: string;
                 BreakIfTrue: string;
                 BreakIfTrueToolTip: string;
+                ChangeBorder: string;
                 ChangeFont: string;
                 ComponentIsEnabled: string;
                 NoConditions: string;
@@ -6578,6 +6594,7 @@ declare namespace Stimulsoft.Base.Localization {
                 menuFileReportWizardNew: string;
                 menuFileSave: string;
                 menuFileSaveAs: string;
+                menuFileScreenNew: string;
                 menuHelp: string;
                 menuHelpAboutProgramm: string;
                 menuHelpContents: string;
@@ -6934,6 +6951,7 @@ declare namespace Stimulsoft.Base.Localization {
                 ListBoxCategory: string;
                 MainCategory: string;
                 MarkerCategory: string;
+                MathFormulaCategory: string;
                 MiscCategory: string;
                 MouseEventsCategory: string;
                 NavigationCategory: string;
@@ -7259,6 +7277,9 @@ declare namespace Stimulsoft.Base.Localization {
                 StiChartTrendLineTypeLinear: string;
                 StiChartTrendLineTypeLogarithmic: string;
                 StiChartTrendLineTypeNone: string;
+                StiCheckStateChecked: string;
+                StiCheckStateIndeterminate: string;
+                StiCheckStateUnchecked: string;
                 StiCheckStyleCheck: string;
                 StiCheckStyleCheckRectangle: string;
                 StiCheckStyleCross: string;
@@ -7900,6 +7921,7 @@ declare namespace Stimulsoft.Base.Localization {
                 Borders: string;
                 BorderSize: string;
                 BorderStyle: string;
+                BorderThickness: string;
                 BorderWidth: string;
                 Bottom: string;
                 BottomLeft: string;
@@ -7936,6 +7958,8 @@ declare namespace Stimulsoft.Base.Localization {
                 ChartAreaBrush: string;
                 ChartAreaShowShadow: string;
                 ChartType: string;
+                CheckAlignment: string;
+                CheckColor: string;
                 Checked: string;
                 CheckOnClick: string;
                 CheckStyle: string;
@@ -8938,6 +8962,7 @@ declare namespace Stimulsoft.Base.Localization {
                 FinishingReport: string;
                 FirstPass: string;
                 FixedBugs: string;
+                FromDefaultState: string;
                 Gallery: string;
                 GenerateNewCode: string;
                 History: string;
@@ -9020,7 +9045,7 @@ declare namespace Stimulsoft.Base.Localization {
                 VisualChecked: string;
                 VisualDefault: string;
                 VisualDisabled: string;
-                VisualHovered: string;
+                VisualHover: string;
                 VisualPressed: string;
                 Warnings: string;
                 WhatsNewInVersion: string;
@@ -9086,6 +9111,7 @@ declare namespace Stimulsoft.Base.Localization {
                 NumberOfDayNone: string;
                 NumberOfDaySecond: string;
                 NumberOfDayThird: string;
+                OpenWindowsTaskScheduler: string;
                 PleaseSelectSchedulerType: string;
                 RadioButtonDay: string;
                 RadioButtonOn: string;
@@ -28387,12 +28413,15 @@ declare namespace Stimulsoft.Report.BarCodes {
         private static Initialize;
         private _encodingName;
         private _value;
-        constructor(value: number, encodingName: string);
+        private _codepage;
+        constructor(value: number, encodingName: string, codepage: number);
         getEncodingName(): string;
         getValue(): number;
+        getCodepage(): number;
         private static addCharacterSet;
         static getCharacterSetECIByName(name: string): CharacterSetECI;
-        static GetEncodingByNumber(number: number, defaultEncoding: string): string;
+        static getCharacterSetECIByCodepage(codepage: number): CharacterSetECI;
+        static getEncodingByNumber(number: number, defaultEncoding: string): string;
     }
 }
 declare namespace Stimulsoft.Report.BarCodes {
@@ -28537,10 +28566,11 @@ declare namespace Stimulsoft.Report.BarCodes {
         private static QUESTION_MARK_CHAR;
         private static CalculateMaskPenalty;
         static Encode(content: string, ecLevel: ErrorCorrectionLevel, qrCode: StiQRCode, startVersion: StiQRCodeSize): void;
-        private static GetEncodingName;
+        private static GetEncodingCodepage;
+        private static TryEncodeByte;
         private static GetAlphanumericCode;
         static ChooseMode(content: string): Mode;
-        static ChooseMode1(content: string, encoding: string): Mode;
+        static ChooseMode1(content: string, encoding: number): Mode;
         private static ChooseMaskPattern;
         private static InitQRCode;
         private static TerminateBits;
@@ -39696,7 +39726,7 @@ declare namespace Stimulsoft.Report.Dictionary {
     }
 }
 declare namespace Stimulsoft.Report.Dictionary {
-    class StiFunctionsProgrammingShortcut {
+    class StiFunctionsProgramming {
         private static isCreated;
         static create(): void;
     }
@@ -41122,12 +41152,13 @@ declare namespace Stimulsoft.Base.Context {
     }
 }
 declare namespace Stimulsoft.Base.Context {
+    import StiAnimation = Stimulsoft.Base.Context.Animation.StiAnimation;
     import Color = Stimulsoft.System.Drawing.Color;
     import StiBrush = Stimulsoft.Base.Drawing.StiBrush;
     import IStiJsonReportObject = Stimulsoft.Base.JsonReportObject.IStiJsonReportObject;
     import Rectangle = Stimulsoft.System.Drawing.Rectangle;
     import Point = Stimulsoft.System.Drawing.Point;
-    class StiTextGeom extends StiGeom implements IStiJsonReportObject {
+    class StiTextGeom extends StiAnimationGeom implements IStiJsonReportObject {
         saveToJsonObject(mode: StiJsonSaveMode): StiJson;
         text: string;
         font: StiFontGeom;
@@ -41142,7 +41173,7 @@ declare namespace Stimulsoft.Base.Context {
         rotationMode: Stimulsoft.Base.Drawing.StiRotationMode;
         toolTip: string;
         get type(): StiGeomType;
-        constructor(text: string, font: StiFontGeom, brush: any, location: any, stringFormat: StiStringFormatGeom, angle: number, antialiasing: boolean, maximalWidth: number, rotationMode: Stimulsoft.Base.Drawing.StiRotationMode, isRotatedText: boolean, toolTip: string);
+        constructor(text: string, font: StiFontGeom, brush: any, location: any, stringFormat: StiStringFormatGeom, angle: number, antialiasing: boolean, maximalWidth: number, rotationMode: Stimulsoft.Base.Drawing.StiRotationMode, isRotatedText: boolean, toolTip: string, animation?: StiAnimation);
     }
 }
 declare namespace Stimulsoft.Base.Context {
@@ -41592,6 +41623,7 @@ declare namespace Stimulsoft.Base.Context {
         pushClipPath(listGeoms: StiSegmentGeom[]): void;
         pushClip(clipRect: Rectangle): void;
         popClip(): void;
+        drawAnimationText(text: string, font: StiFontGeom, brush: any, rect: Rectangle, sf: StiStringFormatGeom, mode: StiRotationMode, angle: number, antialiasing: boolean, maximalWidth: number, animation: StiAnimation): StiTextGeom;
         drawAnimationColumn(brush: any, borderPen: StiPenGeom, rect: any, value: number, toolTip: string, tag: any, animation: StiAnimation, interaction: StiInteractionDataGeom): void;
         drawAnimationBar(brush: any, borderPen: StiPenGeom, columnRect: any, value: number, toolTip: string, tag: any, animation: StiAnimation, interaction: StiInteractionDataGeom): void;
         drawAnimationRectangle(brush: any, pen: StiPenGeom, rect: Rectangle, tag: any, animation: StiAnimation, interaction: StiInteractionDataGeom, tooltip: string): void;
@@ -43132,6 +43164,7 @@ declare namespace Stimulsoft.Report.Export {
         isComponentHasEvent(component: StiComponent): boolean;
         scanComponentsPlacement(optimize: boolean, exportObjectFormatting?: boolean): void;
         private processIntersectedCells;
+        private getMaxRectFromCell;
         splitTagWithCache(inputString: string): string[];
         static splitTag(inputString: string): string[];
         static getStringsFromTag(tag: string, startPosition: number): string[];
@@ -52042,10 +52075,13 @@ declare namespace Stimulsoft.Report.Chart {
         private _animation;
         get animation(): StiAnimation;
         draw(context: StiContext): void;
+        private drawLabelArea;
+        private drawLabelText;
         constructor(seriesLabels: IStiSeriesLabels, series: IStiSeries, index: number, value: number, clientRectangle: RectangleD, text: string, labelColor: Color, labelBorderColor: Color, seriesBrush: StiBrush, seriesLabelsBrush: StiBrush, seriesBorderColor: Color, font: StiFontGeom, animation: StiAnimation);
     }
 }
 declare namespace Stimulsoft.Report.Chart {
+    import StiAnimation = Stimulsoft.Base.Context.Animation.StiAnimation;
     import StiContext = Stimulsoft.Base.Context.StiContext;
     import StiFontGeom = Stimulsoft.Base.Context.StiFontGeom;
     import StiBrush = Stimulsoft.Base.Drawing.StiBrush;
@@ -52069,8 +52105,13 @@ declare namespace Stimulsoft.Report.Chart {
         get startPoint(): PointD;
         private _endPoint;
         get endPoint(): PointD;
+        private _animation;
+        get animation(): StiAnimation;
         draw(context: StiContext): void;
-        constructor(seriesLabels: IStiSeriesLabels, series: IStiSeries, index: number, value: number, clientRectangle: RectangleD, text: string, labelColor: Color, labelBorderColor: Color, seriesBrush: StiBrush, seriesBorderColor: Color, font: StiFontGeom, startPoint: PointD, endPoint: PointD);
+        private drawLabelArea;
+        private drawLines;
+        private drawLabelText;
+        constructor(seriesLabels: IStiSeriesLabels, series: IStiSeries, index: number, value: number, clientRectangle: RectangleD, text: string, labelColor: Color, labelBorderColor: Color, seriesBrush: StiBrush, seriesBorderColor: Color, font: StiFontGeom, startPoint: PointD, endPoint: PointD, animation: StiAnimation);
     }
 }
 declare namespace Stimulsoft.Report.Chart {
@@ -52078,6 +52119,7 @@ declare namespace Stimulsoft.Report.Chart {
     import StiBrush = Stimulsoft.Base.Drawing.StiBrush;
     import Color = Stimulsoft.System.Drawing.Color;
     import RectangleD = Stimulsoft.System.Drawing.Rectangle;
+    import StiAnimation = Stimulsoft.Base.Context.Animation.StiAnimation;
     class StiCenterFunnelLabelsGeom extends StiSeriesLabelsGeom {
         private _seriesBrush;
         get seriesBrush(): StiBrush;
@@ -52091,8 +52133,12 @@ declare namespace Stimulsoft.Report.Chart {
         get text(): string;
         private _labelRect;
         get labelRect(): RectangleD;
+        private _animation;
+        get animation(): StiAnimation;
         draw(context: StiContext): void;
-        constructor(seriesLabels: IStiSeriesLabels, series: IStiSeries, index: number, value: number, clientRectangle: RectangleD, text: string, seriesBrush: StiBrush, labelBrush: StiBrush, borderColor: Color, seriesBorderColor: Color, labelRect: RectangleD);
+        private drawLabelArea;
+        private drawLabelText;
+        constructor(seriesLabels: IStiSeriesLabels, series: IStiSeries, index: number, value: number, clientRectangle: RectangleD, text: string, seriesBrush: StiBrush, labelBrush: StiBrush, borderColor: Color, seriesBorderColor: Color, labelRect: RectangleD, animation: StiAnimation);
     }
 }
 declare namespace Stimulsoft.Report.Chart {
@@ -52129,6 +52175,8 @@ declare namespace Stimulsoft.Report.Chart {
         angleToUse: number;
         animation: StiAnimation;
         draw(context: StiContext): void;
+        private drawLabelArea;
+        private drawLabelText;
         constructor(seriesLabels: IStiSeriesLabels, series: IStiSeries, index: number, value: number, clientRectangle: RectangleD, text: string, seriesBrush: StiBrush, labelBrush: StiBrush, seriesLabelsBrush: StiBrush, borderColor: Color, seriesBorderColor: Color, rotationMode: StiRotationMode, labelRect: RectangleD, angleToUse: number, animation: StiAnimation);
     }
 }
@@ -52148,6 +52196,7 @@ declare namespace Stimulsoft.Report.Chart {
     }
 }
 declare namespace Stimulsoft.Report.Chart {
+    import StiAnimation = Stimulsoft.Base.Context.Animation.StiAnimation;
     import StiContext = Stimulsoft.Base.Context.StiContext;
     import Rectangle = Stimulsoft.System.Drawing.Rectangle;
     import StiBrush = Stimulsoft.Base.Drawing.StiBrush;
@@ -52167,9 +52216,13 @@ declare namespace Stimulsoft.Report.Chart {
         endPoint: PointD;
         arcPoint: PointD;
         centerPie: PointD;
+        animation: StiAnimation;
         draw(context: StiContext): void;
+        private drawLines;
         drawMarker(context: StiContext, itemRect: Rectangle, markerColor: any, markerBrush: StiBrush): void;
-        constructor(seriesLabels: IStiSeriesLabels, series: IStiSeries, index: number, value: number, clientRectangle: RectangleD, text: string, seriesBrush: StiBrush, labelBrush: StiBrush, seriesLabelsBrush: StiBrush, borderColor: Color, seriesBorderColor: Color, labelRect: RectangleD, lineColor: Color, startPoint: PointD, endPoint: PointD, arcPoint: PointD, centerPie: PointD);
+        private drawLabelArea;
+        private drawLabelText;
+        constructor(seriesLabels: IStiSeriesLabels, series: IStiSeries, index: number, value: number, clientRectangle: RectangleD, text: string, seriesBrush: StiBrush, labelBrush: StiBrush, seriesLabelsBrush: StiBrush, borderColor: Color, seriesBorderColor: Color, labelRect: RectangleD, lineColor: Color, startPoint: PointD, endPoint: PointD, arcPoint: PointD, centerPie: PointD, animation: StiAnimation);
     }
 }
 declare namespace Stimulsoft.Report.Chart {
@@ -52197,6 +52250,8 @@ declare namespace Stimulsoft.Report.Chart {
         private _animation;
         get animation(): StiAnimation;
         draw(context: StiContext): void;
+        private drawLabelArea;
+        private drawLabelText;
         constructor(seriesLabels: IStiSeriesLabels, series: IStiSeries, index: number, value: number, clientRectangle: RectangleD, text: string, labelColor: Color, labelBorderColor: Color, seriesBrush: StiBrush, seriesLabelsBrush: StiBrush, seriesBorderColor: Color, font: StiFontGeom, animation: StiAnimation);
     }
 }
@@ -59908,6 +59963,7 @@ declare namespace Stimulsoft.Dashboard.Components {
     class StiDashboard extends StiPage implements IStiDashboard, IStiJsonReportObject {
         private static ImplementsStiDashboard;
         implements(): any[];
+        clone(cloneProperties: boolean): StiDashboard;
         saveToJsonObject(mode: StiJsonSaveMode): StiJson;
         loadFromJsonObject(jObject: StiJson): void;
         loadFromXml(xmlNode: XmlNode, isDocument: boolean): void;
@@ -60057,6 +60113,7 @@ declare namespace Stimulsoft.Dashboard.Components.Panel {
     class StiPanelElement extends StiPanel implements IStiSimpleBorder, IStiPanel, IStiPadding, IStiMargin, IStiAltProperties, IStiJsonReportObject {
         private static ImplementsStiPanelElement;
         implements(): any[];
+        clone(cloneProperties: boolean): StiPanelElement;
         saveToJsonObject(mode: StiJsonSaveMode): StiJson;
         loadFromJsonObject(jObject: StiJson): void;
         loadFromXml(xmlNode: XmlNode, isDocument: boolean): void;
@@ -67536,6 +67593,7 @@ declare namespace Stimulsoft.Report.Check {
                 AfterPrintEvent: string;
                 Alias: string;
                 Anchor: string;
+                BackColor: string;
                 BeforePrintEvent: string;
                 Bookmark: string;
                 Border: string;
@@ -67546,14 +67604,19 @@ declare namespace Stimulsoft.Report.Check {
                 CanShrink: string;
                 CellDockStyle: string;
                 CellType: string;
+                CheckAlignment: string;
+                CheckBrush: string;
+                Checked: string;
                 CheckedChangedEvent: string;
                 ClickEvent: string;
                 ComponentStyle: string;
+                CornerRadius: string;
                 Conditions: string;
                 CountData: string;
                 CrossFiltering: string;
                 DataRelation: string;
                 DataSource: string;
+                Disabled: string;
                 DockStyle: string;
                 DoubleClickEvent: string;
                 Editable: string;
@@ -67563,6 +67626,8 @@ declare namespace Stimulsoft.Report.Check {
                 FilterOn: string;
                 Filters: string;
                 FixedWidth: string;
+                Font: string;
+                ForeColor: string;
                 GetBookmarkEvent: string;
                 GetDrillDownReportEvent: string;
                 GetHyperlinkEvent: string;
@@ -67571,30 +67636,47 @@ declare namespace Stimulsoft.Report.Check {
                 GrowToHeight: string;
                 Height: string;
                 HorAlignment: string;
+                Hover: string;
                 Hyperlink: string;
+                Icon: string;
+                IconAlignment: string;
+                IconBrush: string;
+                IconSet: string;
                 Interaction: string;
                 Left: string;
                 Linked: string;
                 Locked: string;
+                Margin: string;
                 MasterComponent: string;
                 MaxSize: string;
                 MinSize: string;
                 MouseEnterEvent: string;
                 MouseLeaveEvent: string;
                 Name: string;
+                Padding: string;
+                Pressed: string;
                 Printable: string;
                 PrintOn: string;
                 Restrictions: string;
+                Shadow: string;
+                ShapeType: string;
                 ShiftMode: string;
+                Stretch: string;
                 Sort: string;
                 Tag: string;
+                Text: string;
                 TextBrush: string;
+                ThreeStates: string;
                 ToolTip: string;
                 Top: string;
                 TotalLabel: string;
+                Type: string;
                 UseParentStyles: string;
                 VertAlignment: string;
+                VisualStates: string;
+                Watermark: string;
                 Width: string;
+                WordWrap: string;
             };
             StiConstantLines: {
                 Antialiasing: string;
@@ -67825,11 +67907,6 @@ declare namespace Stimulsoft.Report.Check {
                 ShowQuietZoneIndicator: string;
                 SupplementCode: string;
                 SupplementType: string;
-            };
-            StiElement: {
-                BackColor: string;
-                Margin: string;
-                Padding: string;
             };
             StiEmptyBand: {
                 BeginRenderEvent: string;
@@ -68213,7 +68290,6 @@ declare namespace Stimulsoft.Report.Check {
                 UnlimitedBreakable: string;
                 UnlimitedHeight: string;
                 UnlimitedWidth: string;
-                Watermark: string;
             };
             StiPanel: {
                 ColumnGaps: string;
@@ -68318,16 +68394,16 @@ declare namespace Stimulsoft.Report.Check {
                 ConvertNulls: string;
                 EndRenderEvent: string;
                 EngineVersion: string;
-                ExportingEvent: string;
                 ExportedEvent: string;
+                ExportingEvent: string;
                 GlobalizationStrings: string;
                 NumberOfPass: string;
                 ParametersOrientation: string;
                 PreviewMode: string;
                 PreviewSettings: string;
+                PrintedEvent: string;
                 PrinterSettings: string;
                 PrintingEvent: string;
-                PrintedEvent: string;
                 ReferencedAssemblies: string;
                 RenderingEvent: string;
                 ReportAlias: string;
