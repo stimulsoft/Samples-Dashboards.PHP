@@ -7,7 +7,7 @@ require_once '../stimulsoft/helper.php';
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-	<title>Export Report from Code</title>
+	<title>Exporting a Dashboard from Code</title>
 	<style>html, body { font-family: sans-serif; }</style>
 
 	<script src="../scripts/stimulsoft.reports.js" type="text/javascript"></script>

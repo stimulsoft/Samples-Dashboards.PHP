@@ -7,48 +7,41 @@ require_once '../stimulsoft/helper.php';
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-	<title>Send Exported Dashboard to the Server Side</title>
+	<title>Showing a Dashboard in the Viewer</title>
 	<style>html, body { font-family: sans-serif; }</style>
 
+	<!-- Office2013 White-Blue style -->
 	<link href="../css/stimulsoft.viewer.office2013.whiteblue.css" rel="stylesheet">
+	
+	<!-- Stimulsoft Dashboards.PHP scripts -->
 	<script src="../scripts/stimulsoft.reports.js" type="text/javascript"></script>
 	<script src="../scripts/stimulsoft.dashboards.js" type="text/javascript"></script>
 	<script src="../scripts/stimulsoft.viewer.js" type="text/javascript"></script>
 	
 	<?php
-		// Creating the events handler for this example
+		// Creating the default events handler
 		// Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_engine_php_handler.htm
-		StiHelper::init('05-send-exported-dashboard-to-the-server-side-handler.php', 30);
+		StiHelper::init('default-handler.php', 30);
 	?>
 	
 	<script type="text/javascript">
+		// Creating the Viewer options
+		// Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_settings.htm
 		var options = new Stimulsoft.Viewer.StiViewerOptions();
 		options.appearance.fullScreenMode = true;
 		
+		// Creating the Viewer control
+		// Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_deployment.htm
 		var viewer = new Stimulsoft.Viewer.StiViewer(options, "StiViewer", false);
 		
-		// Sending the exported dashboard to the server-side.
-		// Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_web_viewer_export.htm
-		viewer.onEndExportReport = function (args) {
-			// Current export format
-			var format = args.format;
-			// File name of the exported dashboard
-			var fileName = args.fileName;
-			// Exported binary data
-			var data = args.data;
-
-			// Prevent built-in handler, which saves the exported dashboard as a file
-			args.preventDefault = true;
-			
-			// Calling the server-side handler
-			Stimulsoft.Helper.process(args);
-		}
-		
+		// Creating, loading, and then assigning the dashboard template to the Viewer
+		// Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_web_viewer_showing_reports_and_dashboards.htm
 		var dashboard = Stimulsoft.Report.StiReport.createNewDashboard();
 		dashboard.loadFile("../reports/Christmas.mrt");
 		viewer.report = dashboard;
 		
 		function onLoad() {
+			// Rendering the Viewer control in the specified position
 			viewer.renderHtml("viewerContent");
 		}
 	</script>
