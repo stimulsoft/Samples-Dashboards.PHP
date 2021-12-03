@@ -18,7 +18,7 @@ require_once '../stimulsoft/helper.php';
 	<?php
 		// Creating the events handler for this example
 		// Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_engine_php_handler.htm
-		StiHelper::init('05-send-exported-dashboard-to-the-server-side-handler.php', 30);
+		StiHelper::init('Sending%20an%20Exported%20Dashboard%20to%20the%20Server-Side%20Handler.php', 30);
 	?>
 	
 	<script type="text/javascript">

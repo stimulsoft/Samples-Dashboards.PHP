@@ -18,7 +18,7 @@ require_once '../stimulsoft/helper.php';
 	<?php
 		// Creating the events handler for this example
 		// Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_engine_php_handler.htm
-		StiHelper::init('07-use-sql-data-sources-handler.php', 30);
+		StiHelper::init('Using%20a%20SQL%20Data%20Sources%20Handler.php', 30);
 	?>
 	
 	<script type="text/javascript">
