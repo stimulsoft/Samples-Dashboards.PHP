@@ -36,7 +36,7 @@ require_once '../stimulsoft/helper.php';
 	<script src="../scripts/stimulsoft.viewer.js" type="text/javascript"></script>
 	
 	<!-- The script contains visual editor Blockly -->
-	<script src="../scripts/stimulsoft.blockly.js" type="text/javascript"></script>
+	<script src="../scripts/stimulsoft.blockly.editor.js" type="text/javascript"></script>
 	
 	<?php
 		StiHelper::init('default-handler.php', 30);
