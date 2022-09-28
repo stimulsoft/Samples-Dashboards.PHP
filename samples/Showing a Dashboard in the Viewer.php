@@ -10,9 +10,6 @@ require_once '../stimulsoft/helper.php';
 	<title>Showing a Dashboard in the Viewer</title>
 	<style>html, body { font-family: sans-serif; }</style>
 
-	<!-- Office2013 White-Blue style -->
-	<link href="../css/stimulsoft.viewer.office2013.whiteblue.css" rel="stylesheet">
-	
 	<!-- Stimulsoft Dashboards.PHP scripts -->
 	<script src="../scripts/stimulsoft.reports.js" type="text/javascript"></script>
 	<script src="../scripts/stimulsoft.dashboards.js" type="text/javascript"></script>
@@ -29,6 +26,9 @@ require_once '../stimulsoft/helper.php';
 		// Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_settings.htm
 		var options = new Stimulsoft.Viewer.StiViewerOptions();
 		options.appearance.fullScreenMode = true;
+		options.appearance.scrollbarsMode = true;
+		options.toolbar.displayMode = Stimulsoft.Viewer.StiToolbarDisplayMode.Separated;
+		options.height = "600px"; // Height for non-fullscreen mode
 		
 		// Creating the Viewer control
 		// Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_deployment.htm

@@ -10,9 +10,6 @@ require_once '../stimulsoft/helper.php';
 	<title>Loading Scripts in Part to Minify Project</title>
 	<style>html, body { font-family: sans-serif; }</style>
 
-	<!-- Office2013 White-Blue style -->
-	<link href="../css/stimulsoft.viewer.office2013.whiteblue.css" rel="stylesheet">
-	
 	<!-- The main script containing the Engine for working with reports and data -->
 	<!-- Documentation: https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_engine_optimazing_scripts_loading.htm -->
 	<script src="../scripts/stimulsoft.reports.engine.js" type="text/javascript"></script>
@@ -45,6 +42,9 @@ require_once '../stimulsoft/helper.php';
 	<script type="text/javascript">
 		var options = new Stimulsoft.Viewer.StiViewerOptions();
 		options.appearance.fullScreenMode = true;
+		options.appearance.scrollbarsMode = true;
+		options.toolbar.displayMode = Stimulsoft.Viewer.StiToolbarDisplayMode.Separated;
+		options.height = "600px"; // Height for non-fullscreen mode
 		
 		var viewer = new Stimulsoft.Viewer.StiViewer(options, "StiViewer", false);
 	

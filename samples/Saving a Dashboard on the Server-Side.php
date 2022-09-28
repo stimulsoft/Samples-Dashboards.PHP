@@ -10,8 +10,6 @@ require_once '../stimulsoft/helper.php';
 	<title>Saving a Dashboard on the Server-Side</title>
 	<style>html, body { font-family: sans-serif; }</style>
 
-	<link href="../css/stimulsoft.viewer.office2013.whiteblue.css" rel="stylesheet">
-	<link href="../css/stimulsoft.designer.office2013.whiteblue.css" rel="stylesheet">
 	<script src="../scripts/stimulsoft.reports.js" type="text/javascript"></script>
 	<script src="../scripts/stimulsoft.dashboards.js" type="text/javascript"></script>
 	<script src="../scripts/stimulsoft.viewer.js" type="text/javascript"></script>
