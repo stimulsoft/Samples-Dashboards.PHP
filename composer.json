@@ -1,0 +1,9 @@
+{
+    "require": {
+		"stimulsoft/reports-php": "dev-master",
+        "stimulsoft/dashboards-php": "dev-master"
+    },
+	"provide": {
+		"stimulsoft/reports-php": "2022.4.4"
+	}
+}

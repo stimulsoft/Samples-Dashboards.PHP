@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<title>Stimulsoft Dashboards.PHP</title>
-	<style>html, body { font-family: sans-serif; }</style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Stimulsoft Dashboards.PHP</title>
+    <style>
+        html, body {
+            font-family: sans-serif;
+        }
+    </style>
 </head>
 <body>
-	<h1>Stimulsoft Dashboards.PHP - Quick Start</h1><hr /><br />
-	
-	<ul>
-		<li><a href="viewer.php">Open Viewer</a></li>
-		<li><a href="designer.php">Open Designer</a></li>
-		<li><a href="activate.php">How to Activate</a></li>
-		<li><a href="https://www.stimulsoft.com/en/documentation">Documentation</a></li>
-	</ul>
-	<br />
-	
-	<h2>Examples of using the main features</h2><hr /><br />
-	<ul>
-		<li><a href="samples/Showing a Dashboard in the Viewer.php">Showing a Dashboard in the Viewer</a></li>
-		<li><a href="samples/Editing a Dashboard in the Designer.php">Editing a Dashboard in the Designer</a></li>
-		<li><a href="samples/Saving a Dashboard on the Server-Side.php">Saving a Dashboard on the Server-Side</a></li>
-		<li><a href="samples/Exporting a Dashboard from Code.php">Exporting a Dashboard from Code</a></li>
-		<li><a href="samples/Sending an Exported Dashboard to the Server-Side.php">Sending an Exported Dashboard to the Server-Side</a></li>
-		<li><a href="samples/Registering a Data from Code.php">Registering a Data from Code</a></li>
-		<li><a href="samples/Using a SQL Data Sources.php">Using a SQL Data Sources</a></li>
-		<li><a href="samples/Changing the Designer Theme.php">Changing the Designer Theme</a></li>
-		<li><a href="samples/Localizing the Designer.php">Localizing the Designer</a></li>
-		<li><a href="samples/Loading Scripts in Part to Minify Project.php">Loading Scripts in Part to Minify Project</a></li>
-	</ul>
+<h1>Stimulsoft Dashboards.PHP - Quick Start</h1>
+<hr/>
+<ul>
+    <li><a href="Changing the Designer Theme.php">Changing the Designer Theme</a></li>
+    <li><a href="Editing a Dashboard in the Designer.php">Editing a Dashboard in the Designer</a></li>
+    <li><a href="Editing a Dashboard in the Designer using JavaScript.php">Editing a Dashboard in the Designer using JavaScript</a></li>
+    <li><a href="Exporting a Dashboard from Code.php">Exporting a Dashboard from Code</a></li>
+    <li><a href="How to activate the Product.php">How to activate the Product</a></li>
+    <li><a href="Saving a Dashboard on the Server-side.php">Saving a Dashboard on the Server-side</a></li>
+    <!--<li><a href="Selective loading of Scripts for Project minimization.php">Selective loading of Scripts for Project minimization</a></li>-->
+    <li><a href="Sending an Exported dashboard to the Server-side.php">Sending an Exported dashboard to the Server-side</a></li>
+    <li><a href="Showing a Dashboard in the Viewer.php">Showing a Report in the Viewer</a></li>
+    <li><a href="Showing a Dashboard in the Viewer using JavaScript.php">Showing a Report in the Viewer using JavaScript</a></li>
+    <li><a href="Using SQL Data Sources.php">Using SQL Data Sources</a></li>
+</ul>
+
 </body>
 </html>

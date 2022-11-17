@@ -1,4 +1,4 @@
-# PHP JavaScript samples for Stimulsoft Dashboards.PHP
+# PHP and JavaScript samples for Stimulsoft Dashboards.PHP
 
 #### This repository contains the source code of the examples of usage Stimulsoft Dashboards.PHP analytics tool in the PHP applications, using HTML/PHP code and JavaScript components.
 
@@ -6,10 +6,16 @@
 This repository has website project with some report examples.
 
 # Running samples
-Samples folder contains all application files, including the 'index.php' file. So all files from this folder are required to be copied on your PHP server (using ftp or http access interface - depending on your hosting provider). Then, in your browser, you can go to the following address: 
-http://you_domain_name/index.php
+Samples folder contains all application files, including the 'index.php' file. So all files from this folder are required to be copied on your PHP server (using ftp or http access interface - depending on your hosting provider). Then, you need to download the necessary scripts using the [Composer](https://getcomposer.org/) manager. To do this, run the command:
 
-If you use the PHP server installed on local developers computer: 
+```
+composer require stimulsoft/dashboards-php
+```
+
+Finally, in your browser, you can go to the following address:  
+http://your-domain-name/index.php
+
+If you are using a PHP server installed on your local development computer:  
 http://localhost/index.php
 
 # About Stimulsoft Dashboards.PHP
@@ -17,7 +23,9 @@ Stimulsoft Dashboards.PHP is a complete software package for designing and viewi
 
 You can try the [Live Demo](http://demo.stimulsoft.com/#Js)
 
-Read more about [Stimulsoft Reports.PHP](https://www.stimulsoft.com/en/products/dashboards-php)
+Read more about [Stimulsoft Dashboards.PHP](https://www.stimulsoft.com/en/products/dashboards-php)
+
+[PHP Package Repository](https://packagist.org/packages/stimulsoft/dashboards-php)
 
 [Free Download](https://www.stimulsoft.com/en/downloads)
 
