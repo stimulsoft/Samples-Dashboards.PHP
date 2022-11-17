@@ -37,16 +37,6 @@ $handler->onPrepareVariables = function ($args)
     $args->variables['NewVariable'] = ['value' => 'New Value'];
     */
 
-    // Values for 'Variables.mrt' report template.
-    if (count($args->variables) > 0) {
-        $args->variables['Name']->value = 'Maria';
-        $args->variables['Surname']->value = 'Anders';
-        $args->variables['Email']->value = 'm.anders@stimulsoft.com';
-        $args->variables['Address']->value = 'Obere Str. 57, Berlin';
-        $args->variables['Sex']->value = false;
-        $args->variables['BirthDay']->value = '1982-03-20 00:00:00';
-    }
-
     return StiResult::success();
 };
 
@@ -75,11 +65,6 @@ $handler->onBeginProcessData = function ($args)
         $args->parameters['Parameter3']->value = '2019-01-20';
     }
     */
-
-    // Values for 'SimpleListSQLParameters.mrt' report template.
-    if ($args->dataSource == 'customers') {
-        $args->parameters['Country']->value = "Germany";
-    }
 
     // You can send a successful result.
     return StiResult::success();
