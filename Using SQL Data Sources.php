@@ -47,7 +47,7 @@ use Stimulsoft\Viewer\StiViewerOptions;
 
         /** https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_web_designer_creating_editing_report.htm */
         $report = new StiReport();
-        $report->loadFile('reports/Manufacturing.mrt');
+        $report->loadFile('reports/ManufacturingSQL.mrt');
         $viewer->report = $report;
         ?>
 
