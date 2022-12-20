@@ -14,7 +14,7 @@ use Stimulsoft\StiJavaScript;
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Exporting a Report from Code</title>
+    <title>Exporting a Dashboard from Code</title>
     <style>
         html, body {
             font-family: sans-serif;

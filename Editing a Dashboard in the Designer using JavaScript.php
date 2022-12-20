@@ -10,7 +10,7 @@ use Stimulsoft\StiHandler;
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Editing a Dashboard template in the Designer</title>
+    <title>Editing a Dashboard in the Designer</title>
     <style>
         html, body {
             font-family: sans-serif;

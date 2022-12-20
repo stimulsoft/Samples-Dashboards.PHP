@@ -15,7 +15,7 @@ use Stimulsoft\Viewer\StiViewerOptions;
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Using SQL Data Sources</title>
+    <title>Sending an Exported Dashboard to the Server-Side</title>
     <style>
         html, body {
             font-family: sans-serif;
@@ -42,12 +42,12 @@ use Stimulsoft\Viewer\StiViewerOptions;
         /** https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_deployment.htm */
         $viewer = new StiViewer($options);
 
-        /** https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_engine_connecting_sql_data.htm */
-        $viewer->onBeginProcessData = true;
+        /** https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_web_viewer_export.htm */
+        $viewer->onEndExportReport = true;
 
         /** https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_web_designer_creating_editing_report.htm */
         $report = new StiReport();
-        $report->loadFile('reports/ManufacturingSQL.mrt');
+        $report->loadFile('reports/Christmas.mrt');
         $viewer->report = $report;
         ?>
 
