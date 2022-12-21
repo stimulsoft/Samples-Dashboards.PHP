@@ -18,13 +18,13 @@
     <li><a href="Editing a Dashboard in the Designer.php">Editing a Dashboard in the Designer</a></li>
     <li><a href="Editing a Dashboard in the Designer using JavaScript.php">Editing a Dashboard in the Designer using JavaScript</a></li>
     <li><a href="Exporting a Dashboard from Code.php">Exporting a Dashboard from Code</a></li>
-    <li><a href="How to activate the Product.php">How to activate the Product</a></li>
-    <li><a href="Saving a Dashboard on the Server-side.php">Saving a Dashboard on the Server-side</a></li>
-    <!--<li><a href="Selective loading of Scripts for Project minimization.php">Selective loading of Scripts for Project minimization</a></li>-->
-    <li><a href="Sending an Exported dashboard to the Server-side.php">Sending an Exported dashboard to the Server-side</a></li>
-    <li><a href="Showing a Dashboard in the Viewer.php">Showing a Report in the Viewer</a></li>
-    <li><a href="Showing a Dashboard in the Viewer using JavaScript.php">Showing a Report in the Viewer using JavaScript</a></li>
-    <li><a href="Using SQL Data Sources.php">Using SQL Data Sources</a></li>
+    <li><a href="How to Activate the Product.php">How to Activate the Product</a></li>
+    <li><a href="Saving a Dashboard on the Server-Side.php">Saving a Dashboard on the Server-Side</a></li>
+    <!--<li><a href="Loading Scripts in Part to Minify Project.php">Loading Scripts in Part to Minify Project</a></li>-->
+    <li><a href="Sending an Exported Dashboard to the Server-Side.php">Sending an Exported Dashboard to the Server-Side</a></li>
+    <li><a href="Showing a Dashboard in the Viewer.php">Showing a Dashboard in the Viewer</a></li>
+    <li><a href="Showing a Dashboard in the Viewer using JavaScript.php">Showing a Dashboard in the Viewer using JavaScript</a></li>
+    <li><a href="Using a SQL Data Sources.php">Using a SQL Data Sources</a></li>
 </ul>
 
 </body>
