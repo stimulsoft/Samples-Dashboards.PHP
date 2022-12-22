@@ -1,10 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
-
-use Stimulsoft\StiHandler;
-
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +20,7 @@ use Stimulsoft\StiHandler;
 
     <script type="text/javascript">
         <?php
-        $handler = new StiHandler();
+        $handler = new \Stimulsoft\StiHandler();
         $handler->renderHtml();
         ?>
 

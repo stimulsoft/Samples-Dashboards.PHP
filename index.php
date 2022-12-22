@@ -11,7 +11,7 @@
     </style>
 </head>
 <body>
-<h1>Stimulsoft Dashboards.PHP - Quick Start</h1>
+<h2>Stimulsoft Dashboards.PHP - Quick Start</h2>
 <hr/>
 <ul>
     <li><a href="Changing the Designer Theme.php">Changing the Designer Theme</a></li>

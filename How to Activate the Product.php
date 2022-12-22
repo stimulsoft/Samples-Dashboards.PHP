@@ -1,10 +1,5 @@
 <?php
 require_once 'vendor/autoload.php';
-
-use Stimulsoft\Enums\StiComponentType;
-use Stimulsoft\StiHandler;
-use Stimulsoft\StiJavaScript;
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,14 +24,14 @@ use Stimulsoft\StiJavaScript;
 
     <?php
     /** https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_engine_deployment.htm */
-    $js = new StiJavaScript(StiComponentType::Report);
+    $js = new \Stimulsoft\StiJavaScript(\Stimulsoft\StiComponentType::Report);
     $js->renderHtml();
     ?>
 
     <script type="text/javascript">
         <?php
         /** https://www.stimulsoft.com/en/documentation/online/programming-manual/index.html?reports_and_dashboards_for_php_engine_activation.htm */
-        $handler = new StiHandler();
+        $handler = new \Stimulsoft\StiHandler();
         //$handler->license->setKey('6vJhGtLLLz2GNviWmUTrhSqnO...');
         //$handler->license->setFile('license.key');
         $handler->renderHtml();
@@ -44,7 +39,7 @@ use Stimulsoft\StiJavaScript;
     </script>
 </head>
 <body>
-<h1>How to activate the Product</h1>
+<h2>How to activate the Product</h2>
 <hr/>
 <br/>
 The 30-day trial version of the product does not contain any restrictions, except for the Trial watermark on the report pages, and reminders about using the Trial
