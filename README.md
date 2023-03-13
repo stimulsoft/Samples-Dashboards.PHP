@@ -1,6 +1,6 @@
 # PHP and JavaScript samples for Stimulsoft Dashboards.PHP
 
-#### This repository contains the source code of the examples of usage Stimulsoft Dashboards.PHP analytics tool in the PHP applications, using HTML/PHP code and JavaScript components.
+#### This repository contains the source code of the examples of usage Stimulsoft Dashboards.PHP analytics tool in the PHP applications, using HTML/PHP code and JavaScript components. The product is fully compatible with PHP 5, PHP 7, and PHP 8 versions.
 
 # Overview
 This repository has website project with some report examples.
