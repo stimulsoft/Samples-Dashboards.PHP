@@ -16,7 +16,7 @@ This repository has website project with a set of examples, each is in a separat
 * [Sending an Exported Dashboard to the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Sending%20an%20Exported%20Dashboard%20to%20the%20Server-Side.php)
 * [Showing a Dashboard in the Viewer](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Showing%20a%20Dashboard%20in%20the%20Viewer.php)
 * [Showing a Dashboard in the Viewer using JavaScript](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Showing%20a%20Dashboard%20in%20the%20Viewer%20using%20JavaScript.php)
-* [Using a SQL Data Sources](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Using%20a%20SQL%20Data%20Sources.php)
+* [Using SQL Data Sources](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Using%20SQL%20Data%20Sources.php)
   
 For all the examples, one event handler has been created with all the necessary events:
 * [handler.php](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/handler.php)

@@ -26,7 +26,7 @@
     <li><a href="Sending an Exported Dashboard to the Server-Side.php">Sending an Exported Dashboard to the Server-Side</a></li>
     <li><a href="Showing a Dashboard in the Viewer.php">Showing a Dashboard in the Viewer</a></li>
     <li><a href="Showing a Dashboard in the Viewer using JavaScript.php">Showing a Dashboard in the Viewer using JavaScript</a></li>
-    <li><a href="Using a SQL Data Sources.php">Using a SQL Data Sources</a></li>
+    <li><a href="Using SQL Data Sources.php">Using SQL Data Sources</a></li>
 </ul>
 
 </body>
