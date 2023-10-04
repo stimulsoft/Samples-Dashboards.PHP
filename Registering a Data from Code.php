@@ -43,7 +43,7 @@ require_once 'vendor/autoload.php';
         $viewer->report = $report;
         ?>
 
-        function onBeginProcessData(args) {
+        function registerData(report) {
             // Creating new DataSet object
             let dataSet = new Stimulsoft.System.Data.DataSet("Demo");
 
@@ -56,11 +56,24 @@ require_once 'vendor/autoload.php';
             // Loading JSON data file (instead of XML data file) from specified URL to the DataSet object
             //dataSet.readJsonFile("../data/Demo.json");
 
-            // Removing all connections from the dashboard template
-            args.report.dictionary.databases.clear();
-
             // Registering DataSet object
-            args.report.regData("Demo", "Demo", dataSet);
+            report.regData("Demo", "Demo", dataSet);
+        }
+
+        function onBeginProcessData(args) {
+            // Getting a report from args
+            let report = args.report;
+
+            // Removing all connections from the dashboard template
+            report.dictionary.databases.clear();
+
+            // Registering data from XML or JSON
+            registerData(report);
+
+            // Registering data after refreshing a dashboard
+            report.onRefreshing = function () {
+                registerData(report);
+            }
         }
 
         function onLoad() {
