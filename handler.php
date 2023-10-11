@@ -97,7 +97,7 @@ $handler->onEndExportReport = function ($args)
 {
     // Getting the file name with the extension.
     $reportName = $args->fileName;
-    if (substr($reportName, -4) !== '.' . $args->fileExtension)
+    if (substr($reportName, -strlen($args->fileExtension) - 1) !== '.' . $args->fileExtension)
         $reportName .= '.' . $args->fileExtension;
 
     // By default, the exported file is saved to the 'reports' folder.
