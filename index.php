@@ -20,7 +20,7 @@
     <li><a href="Exporting a Dashboard from Code.php">Exporting a Dashboard from Code</a></li>
     <li><a href="How to Activate the Product.php">How to Activate the Product</a></li>
     <li><a href="Saving a Dashboard on the Server-Side.php">Saving a Dashboard on the Server-Side</a></li>
-    <!--<li><a href="Loading Scripts in Part to Minify Project.php">Loading Scripts in Part to Minify Project</a></li>-->
+    <li><a href="Loading Scripts in Part to Minify Project.php">Loading Scripts in Part to Minify Project</a></li>
     <li><a href="Localizing the Designer.php">Localizing the Designer</a></li>
     <li><a href="Registering a Data from Code.php">Registering a Data from Code</a></li>
     <li><a href="Sending an Exported Dashboard to the Server-Side.php">Sending an Exported Dashboard to the Server-Side</a></li>
