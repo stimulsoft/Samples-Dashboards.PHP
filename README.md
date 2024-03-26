@@ -1,9 +1,9 @@
 # PHP and JavaScript samples for Stimulsoft Dashboards.PHP
 
-#### This repository contains the source code of the examples of usage Stimulsoft Dashboards.PHP analytics tool in the PHP applications, using HTML/PHP code and JavaScript components. The embedded dashboard components is fully compatible with PHP 5, PHP 7, and PHP 8 versions. Deployment is supported both with PHP and with JavaScript code.
+#### This repository contains examples of integrating the Stimulsoft Dashboards.PHP analytics tool into PHP applications, using a set of PHP classes and functions that allow you to easily add a JavaScript report generator to PHP applications. The reporting components are fully compatible with PHP 5, PHP 7, and PHP 8 versions. The integration supports PHP and JavaScript code.
 
 ## Overview
-This repository has website project with a set of examples, each is in a separate .php file:
+This repository contains a PHP project ready to run. The 'index.php' file contains links to examples, each of which is located in a separate .php file:
 * [Changing the Designer Theme](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Changing%20the%20Designer%20Theme.php)
 * [Editing a Dashboard in the Designer](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Editing%20a%20Dashboard%20in%20the%20Designer.php)
 * [Editing a Dashboard in the Designer using JavaScript](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Editing%20a%20Dashboard%20in%20the%20Designer%20using%20JavaScript.php)
@@ -18,7 +18,7 @@ This repository has website project with a set of examples, each is in a separat
 * [Showing a Dashboard in the Viewer using JavaScript](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Showing%20a%20Dashboard%20in%20the%20Viewer%20using%20JavaScript.php)
 * [Using SQL Data Sources](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Using%20SQL%20Data%20Sources.php)
   
-For all the examples, one event handler has been created with all the necessary events:
+One event handler has been created with all the necessary events for each example:
 * [handler.php](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/handler.php)
 
 ## Running samples
