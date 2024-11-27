@@ -1,13 +1,14 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Stimulsoft\Enums\StiHtmlMode;
 use Stimulsoft\Export\Enums\StiExportFormat;
 use Stimulsoft\Report\StiReport;
 
 
-// Creating a report object
+// Creating a report object and set the necessary javascript options
 $report = new StiReport();
+$report->javascript->useRelativeUrls = false;
 
 // Processing the request and, if successful, immediately printing the result
 $report->process();
@@ -15,14 +16,14 @@ $report->process();
 // Loading a dashboard by URL
 // This method does not load the report object on the server side, it only generates the necessary JavaScript code
 // The dashboard will be loaded into a JavaScript object on the client side
-$report->loadFile('reports/Christmas.mrt');
+$report->loadFile('../reports/Christmas.mrt');
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>Exporting a Report from Code</title>
     <style>
         html, body {

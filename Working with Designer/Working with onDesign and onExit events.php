@@ -1,5 +1,5 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Stimulsoft\Designer\StiDesigner;
 use Stimulsoft\Report\StiReport;
@@ -25,6 +25,9 @@ else {
     $component->options->toolbar->showDesignButton = true;
 }
 
+// Set the necessary javascript options
+$component->javascript->useRelativeUrls = false;
+
 // Processing the request and, if successful, immediately printing the result
 $component->process();
 
@@ -34,7 +37,7 @@ $report = new StiReport();
 // Loading a dashboard by URL
 // This method does not load the report object on the server side, it only generates the necessary JavaScript code
 // The dashboard will be loaded into a JavaScript object on the client side
-$report->loadFile('reports/Christmas.mrt');
+$report->loadFile('../reports/Christmas.mrt');
 
 // Assigning a report object to the component
 $component->report = $report;
@@ -44,7 +47,7 @@ $component->report = $report;
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>Working with onDesign and onExit events</title>
     <style>
         html, body {

@@ -1,12 +1,13 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Stimulsoft\Designer\StiDesigner;
 use Stimulsoft\Report\StiReport;
 
 
-// Creating a designer object
+// Creating a designer object and set the necessary javascript options
 $designer = new StiDesigner();
+$designer->javascript->useRelativeUrls = false;
 
 // Defining designer events before processing
 // It is allowed to assign a PHP function, or the name of a JavaScript function, or a JavaScript function as a string
@@ -27,7 +28,7 @@ $designer->report = $report;
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>Registering Data when Creating a New Dashboard</title>
     <style>
         html, body {
@@ -49,13 +50,13 @@ $designer->report = $report;
             let dataSet = new Stimulsoft.System.Data.DataSet("Demo");
 
             // Loading XSD schema file from specified URL to the DataSet object
-            dataSet.readXmlSchemaFile("data/Demo.xsd");
+            dataSet.readXmlSchemaFile("../data/Demo.xsd");
 
             // Loading XML data file from specified URL to the DataSet object
-            dataSet.readXmlFile("data/Demo.xml");
+            dataSet.readXmlFile("../data/Demo.xml");
 
             // Loading JSON data file (instead of XML data file) from specified URL to the DataSet object
-            //dataSet.readJsonFile("data/Demo.json");
+            //dataSet.readJsonFile("../data/Demo.json");
 
             // Removing all connections from the dashboard template
             args.report.dictionary.databases.clear();

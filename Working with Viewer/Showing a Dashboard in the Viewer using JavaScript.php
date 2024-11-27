@@ -1,5 +1,5 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Stimulsoft\Events\StiDataEventArgs;
 use Stimulsoft\StiHandler;
@@ -27,39 +27,41 @@ $handler->process();
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Editing a Report Template in the Designer using JavaScript</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <title>Showing a Dashboard in the Viewer in an HTML template using JavaScript</title>
     <style>
         html, body {
             font-family: sans-serif;
         }
     </style>
 
-    <!-- Adding JavaScript code required for the designer to work -->
-    <script src="vendor/stimulsoft/reports-php/scripts/stimulsoft.reports.js" type="text/javascript"></script>
-    <script src="vendor/stimulsoft/reports-php/scripts/stimulsoft.viewer.js" type="text/javascript"></script>
-    <script src="vendor/stimulsoft/reports-php/scripts/stimulsoft.designer.js" type="text/javascript"></script>
-    <script src="vendor/stimulsoft/reports-php/scripts/stimulsoft.blockly.editor.js" type="text/javascript"></script>
-    <script src="vendor/stimulsoft/dashboards-php/scripts/stimulsoft.dashboards.js" type="text/javascript"></script>
-
+    <!-- Adding JavaScript code required for the viewer to work -->
+    <script src="/vendor/stimulsoft/reports-php/scripts/stimulsoft.reports.js" type="text/javascript"></script>
+    <script src="/vendor/stimulsoft/reports-php/scripts/stimulsoft.viewer.js" type="text/javascript"></script>
+    <script src="/vendor/stimulsoft/dashboards-php/scripts/stimulsoft.dashboards.js" type="text/javascript"></script>
+    
     <?php
     // Rendering the necessary JavaScript code of the handler
     $handler->renderHtml();
     ?>
 
     <script type="text/javascript">
-
-        // Creating and configuring the designer options object
-        let options = new Stimulsoft.Designer.StiDesignerOptions();
+    
+        // Creating and configuring the viewer options object
+        let options = new Stimulsoft.Viewer.StiViewerOptions();
         options.appearance.fullScreenMode = true;
+        options.appearance.scrollbarsMode = true;
 
-        // Creating the designer object with the necessary options
-        let designer = new Stimulsoft.Designer.StiDesigner(options, "StiDesigner", false);
+        // Setting the height of the viewer for non-fullscreen mode
+        options.height = "600px";
 
-        // Defining designer events
+        // Creating the viewer object with the necessary options
+        let viewer = new Stimulsoft.Viewer.StiViewer(options, "StiViewer", false);
+
+        // Defining viewer events
         // This event will be triggered when requesting data for a dashboard
         // To process the result on the server-side, you need to call the JavaScript event handler in the event
-        designer.onBeginProcessData = function (args, callback) {
+        viewer.onBeginProcessData = function (args, callback) {
             Stimulsoft.handler.process(args, callback);
         }
 
@@ -67,21 +69,21 @@ $handler->process();
         let report = new Stimulsoft.Report.StiReport();
 
         // Loading a dashboard by URL
-        report.loadFile("reports/Christmas.mrt");
+        report.loadFile("../reports/Christmas.mrt");
 
-        // Assigning a report object to the designer
-        designer.report = report;
+        // Assigning a report object to the viewer
+        viewer.report = report;
 
         function onLoad() {
-            // Rendering the necessary JavaScript code and visual HTML part of the designer
+            // Rendering the necessary JavaScript code and visual HTML part of the viewer
             // The rendered code will be placed inside the specified HTML element
-            designer.renderHtml("designerContent");
+            viewer.renderHtml("viewerContent");
         }
     </script>
 </head>
 <body onload="onLoad();">
-<h2>Editing a Dashboard Template in the Designer using JavaScript</h2>
+<h2>Showing a Dashboard in the Viewer in an HTML template using JavaScript</h2>
 <hr>
-<div id="designerContent"></div>
+<div id="viewerContent"></div>
 </body>
 </html>

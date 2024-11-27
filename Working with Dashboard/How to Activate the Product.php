@@ -1,12 +1,13 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Stimulsoft\StiLicense;
 use Stimulsoft\Report\StiReport;
 
 
-// Creating a report object
+// Creating a report object and set the necessary javascript options
 $report = new StiReport();
+$report->javascript->useRelativeUrls = false;
 
 // You can use one of the methods below to register your license key for all components
 //StiLicense::setPrimaryKey('6vJhGtLLLz2GNviWmUTrhSqnO...');
@@ -22,14 +23,14 @@ $report->process();
 // Loading a dashboard by URL
 // This method does not load the report object on the server side, it only generates the necessary JavaScript code
 // The dashboard will be loaded into a JavaScript object on the client side
-$report->loadFile('reports/Christmas.mrt');
+$report->loadFile('../reports/Christmas.mrt');
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>How to activate the Product</title>
     <style>
         html, body {
@@ -59,6 +60,10 @@ $report->loadFile('reports/Christmas.mrt');
 <body>
 <h2>How to Activate the Product</h2>
 <hr>
+<?php
+// Rendering the HTML part of the dashboard engine
+$report->renderHtml();
+?>
 <br>
 The 30-day trial version of the product does not contain any restrictions, except for the Trial watermark on the dashboard, and reminders about using the Trial
 version.<br>

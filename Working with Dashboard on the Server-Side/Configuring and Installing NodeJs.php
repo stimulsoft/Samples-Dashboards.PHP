@@ -1,8 +1,11 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Stimulsoft\StiNodeJs;
 
+
+// Changing the working directory one level up, this is necessary because the examples are in a subdirectory
+chdir('..');
 
 // Creating a Node.js object
 $nodejs = new StiNodeJs();
@@ -11,9 +14,9 @@ $nodejs = new StiNodeJs();
 //$nodejs->binDirectory = "C:\\Program Files\\nodejs";
 //$nodejs->binDirectory = "/usr/bin/nodejs";
 
-// Setting the path to the working directory where Node.js packages will be deployed
-// By default, the current Python script execution directory is used
-//$nodejs->workingDirectory = '';
+// Setting the path to the working directory where Node.js scripts will be running
+// By default, the current PHP script working directory is used
+//$nodejs->workingDirectory = __DIR__;
 
 // Installing the Node.js package from the official website, may take some time
 // If the installation fails, the function will return false
@@ -31,7 +34,7 @@ $message = $result ? 'The installation was successful.' : $nodejs->error;
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>Configuring and Installing Node.js</title>
     <style>
         html, body {

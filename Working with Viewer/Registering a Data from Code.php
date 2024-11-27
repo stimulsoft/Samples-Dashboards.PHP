@@ -1,12 +1,13 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Stimulsoft\Report\StiReport;
 use Stimulsoft\Viewer\StiViewer;
 
 
-// Creating a viewer object
+// Creating a viewer object and set the necessary javascript options
 $viewer = new StiViewer();
+$viewer->javascript->useRelativeUrls = false;
 $viewer->options->height = '800px';
 
 // Creating a report object
@@ -23,7 +24,7 @@ $viewer->process();
 // Loading a dashboard by URL
 // This method does not load the report object on the server side, it only generates the necessary JavaScript code
 // The dashboard will be loaded into a JavaScript object on the client side
-$report->loadFile('reports/ProductStats.mrt');
+$report->loadFile('../reports/ProductStats.mrt');
 
 // Assigning a report object to the viewer
 $viewer->report = $report;
@@ -33,7 +34,7 @@ $viewer->report = $report;
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>Registering a Data from Code</title>
     <style>
         html, body {
@@ -55,13 +56,13 @@ $viewer->report = $report;
             let dataSet = new Stimulsoft.System.Data.DataSet("Demo");
 
             // Loading XSD schema file from specified URL to the DataSet object
-            dataSet.readXmlSchemaFile("data/Demo.xsd");
+            dataSet.readXmlSchemaFile("../data/Demo.xsd");
 
             // Loading XML data file from specified URL to the DataSet object
-            dataSet.readXmlFile("data/Demo.xml");
+            dataSet.readXmlFile("../data/Demo.xml");
 
             // Loading JSON data file (instead of XML data file) from specified URL to the DataSet object
-            //dataSet.readJsonFile("data/Demo.json");
+            //dataSet.readJsonFile("../data/Demo.json");
 
             // Removing all connections from the dashboard template
             args.report.dictionary.databases.clear();

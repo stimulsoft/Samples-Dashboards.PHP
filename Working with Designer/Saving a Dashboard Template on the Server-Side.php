@@ -1,5 +1,5 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Stimulsoft\Designer\StiDesigner;
 use Stimulsoft\Events\StiReportEventArgs;
@@ -7,8 +7,10 @@ use Stimulsoft\Report\StiReport;
 use Stimulsoft\StiResult;
 
 
-// Creating a designer object
+// Creating a designer object and set the necessary javascript options
 $designer = new StiDesigner();
+$designer->javascript->useRelativeUrls = false;
+$designer->javascript->appendHead('<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">');
 
 // Defining designer events before processing
 // It is allowed to assign a PHP function, or the name of a JavaScript function, or a JavaScript function as a string
@@ -21,7 +23,7 @@ $designer->onSaveReport = function (StiReportEventArgs $args)
         $reportFileName .= '.mrt';
 
     // Saving the report file in the 'reports' folder on the server-side
-    $reportPath = "reports/$reportFileName";
+    $reportPath = "../reports/$reportFileName";
     $result = file_put_contents($reportPath, $args->getReportJson());
 
     // If required, it is possible to show a message about success or some error
@@ -40,7 +42,7 @@ $report = new StiReport();
 // Loading a dashboard by URL
 // This method does not load the report object on the server side, it only generates the necessary JavaScript code
 // The dashboard will be loaded into a JavaScript object on the client side
-$report->loadFile('reports/Christmas.mrt');
+$report->loadFile('../reports/Christmas.mrt');
 
 // Assigning a report object to the designer
 $designer->report = $report;

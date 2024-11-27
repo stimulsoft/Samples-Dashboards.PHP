@@ -6,40 +6,40 @@
 This repository contains a PHP project ready to run. The 'index.php' file contains links to examples, each of which is located in a separate .php file:
 
 #### License activation
-* [How to Activate the Product](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/How%20to%20Activate%20the%20Product.php)
+* [How to Activate the Product](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Dashboard/How%20to%20Activate%20the%20Product.php)
 
 #### Working with Dashboard
-* [Printing a Dashboard from Code](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Printing%20a%20Dashboard%20from%20Code.php)
-* [Exporting a Dashboard from Code](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Exporting%20a%20Dashboard%20from%20Code.php)
-* [Changing Dashboard Properties on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Changing%20Dashboard%20Properties%20on%20the%20Server-Side.php)
+* [Printing a Dashboard from Code](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Dashboard/Printing%20a%20Dashboard%20from%20Code.php)
+* [Exporting a Dashboard from Code](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Dashboard/Exporting%20a%20Dashboard%20from%20Code.php)
+* [Changing Dashboard Properties on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Dashboard/Changing%20Dashboard%20Properties%20on%20the%20Server-Side.php)
 
 #### Working with Dashboard on the Server-Side
-* [Configuring and Installing Node.js](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Configuring%20and%20Installing%20NodeJs.php)
-* [Exporting a Dashboard from Code on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Exporting%20a%20Dashboard%20from%20Code%20on%20the%20Server-Side.php)
-* [Registering a Data from Code when Exporting a Dashboard on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Registering%20a%20Data%20from%20Code%20when%20Exporting%20a%20Dashboard%20on%20the%20Server-Side.php)
-* [Exporting a Dashboard from Code with Changing Export Settings](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Exporting%20a%20Dashboard%20from%20Code%20with%20Changing%20Export%20Settings.php)
+* [Configuring and Installing Node.js](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Dashboard%20on%20the%20Server-Side/Configuring%20and%20Installing%20NodeJs.php)
+* [Exporting a Dashboard from Code on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Dashboard%20on%20the%20Server-Side/Exporting%20a%20Dashboard%20from%20Code%20on%20the%20Server-Side.php)
+* [Registering a Data from Code when Exporting a Dashboard on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Dashboard%20on%20the%20Server-Side/Registering%20a%20Data%20from%20Code%20when%20Exporting%20a%20Dashboard%20on%20the%20Server-Side.php)
+* [Exporting a Dashboard from Code with Changing Export Settings](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Dashboard%20on%20the%20Server-Side/Exporting%20a%20Dashboard%20from%20Code%20with%20Changing%20Export%20Settings.php)
 
 #### Working with Viewer
-* [Showing a Dashboard in the Viewer](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Showing%20a%20Dashboard%20in%20the%20Viewer.php)
-* [Showing a Dashboard in the Viewer in an HTML template](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Showing%20a%20Dashboard%20in%20the%20Viewer%20in%20an%20HTML%20template.php)
-* [Showing a Dashboard in the Viewer in an HTML template using PHP variables](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Showing%20a%20Dashboard%20in%20the%20Viewer%20in%20an%20HTML%20template%20using%20PHP%20variables.php)
-* [Showing a Dashboard in the Viewer using JavaScript](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Showing%20a%20Dashboard%20in%20the%20Viewer%20using%20JavaScript.php)
-* [Changing the Viewer Theme](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Changing%20the%20Viewer%20Theme.php)
-* [Registering a Data from Code](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Registering%20a%20Data%20from%20Code.php)
-* [Using SQL Data Sources](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Using%20SQL%20Data%20Sources.php)
-* [Changing an Export Settings on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Changing%20an%20Export%20Settings%20on%20the%20Server-Side.php)
-* [Sending an Exported Dashboard to the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Sending%20an%20Exported%20Dashboard%20to%20the%20Server-Side.php)
-* [Opening the Dashboard in the Viewer and Changing it on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Opening%20the%20Dashboard%20in%20the%20Viewer%20and%20Changing%20it%20on%20the%20Server-Side.php)
+* [Showing a Dashboard in the Viewer](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Viewer/Showing%20a%20Dashboard%20in%20the%20Viewer.php)
+* [Showing a Dashboard in the Viewer in an HTML template](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Viewer/Showing%20a%20Dashboard%20in%20the%20Viewer%20in%20an%20HTML%20template.php)
+* [Showing a Dashboard in the Viewer in an HTML template using PHP variables](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Viewer/Showing%20a%20Dashboard%20in%20the%20Viewer%20in%20an%20HTML%20template%20using%20PHP%20variables.php)
+* [Showing a Dashboard in the Viewer using JavaScript](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Viewer/Showing%20a%20Dashboard%20in%20the%20Viewer%20using%20JavaScript.php)
+* [Changing the Viewer Theme](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Viewer/Changing%20the%20Viewer%20Theme.php)
+* [Registering a Data from Code](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Viewer/Registering%20a%20Data%20from%20Code.php)
+* [Using SQL Data Sources](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Viewer/Using%20SQL%20Data%20Sources.php)
+* [Changing an Export Settings on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Viewer/Changing%20an%20Export%20Settings%20on%20the%20Server-Side.php)
+* [Sending an Exported Dashboard to the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Viewer/Sending%20an%20Exported%20Dashboard%20to%20the%20Server-Side.php)
+* [Opening the Dashboard in the Viewer and Changing it on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Viewer/Opening%20the%20Dashboard%20in%20the%20Viewer%20and%20Changing%20it%20on%20the%20Server-Side.php)
 
 #### Working with Designer
-* [Editing a Dashboard Template in the Designer](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Editing%20a%20Dashboard%20Template%20in%20the%20Designer.php)
-* [Editing a Dashboard Template in the Designer in an HTML template](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Editing%20a%20Dashboard%20Template%20in%20the%20Designer%20in%20an%20HTML%20template.php)
-* [Editing a Dashboard Template in the Designer using JavaScript](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Editing%20a%20Dashboard%20Template%20in%20the%20Designer%20using%20JavaScript.php)
-* [Saving a Dashboard Template on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Saving%20a%20Dashboard%20Template%20on%20the%20Server-Side.php)
-* [Registering Data when Creating a New Dashboard](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Registering%20Data%20when%20Creating%20a%20New%20Dashboard.php)
-* [Localizing the Designer](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Localizing%20the%20Designer.php)
-* [Loading Scripts in Part to Minify Project](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Loading%20Scripts%20in%20Part%20to%20Minify%20Project.php)
-* [Working with onDesign and onExit events](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/major/Working%20with%20onDesign%20and%20onExit%20events.php)
+* [Editing a Dashboard Template in the Designer](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Designer/Editing%20a%20Dashboard%20Template%20in%20the%20Designer.php)
+* [Editing a Dashboard Template in the Designer in an HTML template](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Designer/Editing%20a%20Dashboard%20Template%20in%20the%20Designer%20in%20an%20HTML%20template.php)
+* [Editing a Dashboard Template in the Designer using JavaScript](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Designer/Editing%20a%20Dashboard%20Template%20in%20the%20Designer%20using%20JavaScript.php)
+* [Saving a Dashboard Template on the Server-Side](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Designer/Saving%20a%20Dashboard%20Template%20on%20the%20Server-Side.php)
+* [Registering Data when Creating a New Dashboard](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Designer/Registering%20Data%20when%20Creating%20a%20New%20Dashboard.php)
+* [Localizing the Designer](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Designer/Localizing%20the%20Designer.php)
+* [Loading Scripts in Part to Minify Project](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Designer/Loading%20Scripts%20in%20Part%20to%20Minify%20Project.php)
+* [Working with onDesign and onExit events](https://github.com/stimulsoft/Samples-Dashboards.PHP/blob/main/Working%20with%20Designer/Working%20with%20onDesign%20and%20onExit%20events.php)
 
 ## Running samples
 The samples folder contains all the scripts and resources of the project, including the 'index.php' file. So all files from this folder are required to be copied on your PHP server, using FTP or HTTP access interface - depending on your hosting provider.

@@ -1,13 +1,15 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Stimulsoft\Events\StiReportEventArgs;
 use Stimulsoft\Report\StiReport;
 use Stimulsoft\Viewer\StiViewer;
 
 
-// Creating a viewer object
+// Creating a viewer object and set the necessary javascript options
 $viewer = new StiViewer();
+$viewer->javascript->useRelativeUrls = false;
+$viewer->javascript->appendHead('<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">');
 
 $viewer->handler->encryptData = false;
 
@@ -20,7 +22,7 @@ $viewer->onOpenedReport = function (StiReportEventArgs $args) {
     $args->report->ReportAlias = 'Dashboard Alias from Server-Side';
 
     // Or you can upload a new one
-    $reportJsonString = file_get_contents('reports/Christmas.mrt');
+    $reportJsonString = file_get_contents('../reports/Christmas.mrt');
     $args->setReportJson($reportJsonString);
 };
 
@@ -33,7 +35,7 @@ $report = new StiReport();
 // Loading a dashboard by URL
 // This method does not load the report object on the server side, it only generates the necessary JavaScript code
 // The dashboard will be loaded into a JavaScript object on the client side
-$report->loadFile('reports/SalesOverview.mrt');
+$report->loadFile('../reports/SalesOverview.mrt');
 
 // Assigning a report object to the viewer
 $viewer->report = $report;

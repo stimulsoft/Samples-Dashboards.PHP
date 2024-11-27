@@ -1,11 +1,14 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use Stimulsoft\Export\Enums\StiExportFormat;
 use Stimulsoft\Export\StiPdfExportSettings;
 use Stimulsoft\Report\Enums\StiEngineType;
 use Stimulsoft\Report\StiReport;
 
+
+// Changing the working directory one level up, this is necessary because the examples are in a subdirectory
+chdir('..');
 
 // Creating a report object
 $report = new StiReport();
@@ -41,7 +44,7 @@ $message = $result ? 'Exporting the dashboard to PDF was successful, the file is
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <title>Exporting a Dashboard from Code with Changing Export Settings</title>
     <style>
         html, body {
