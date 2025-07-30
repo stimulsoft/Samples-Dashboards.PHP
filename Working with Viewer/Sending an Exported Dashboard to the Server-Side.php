@@ -22,6 +22,12 @@ $viewer->onEndExportReport = function (StiExportEventArgs $args) {
     if (substr($reportName, -strlen($args->fileExtension) - 1) !== '.' . $args->fileExtension)
         $reportName .= '.' . $args->fileExtension;
 
+    // If the dashboard snapshot is saved, add it to the file name
+    if ($args->fileExtension == 'mrt') {
+        $lastDotPos = strrpos($reportName, '.');
+        $reportName = substr($reportName, 0, $lastDotPos) . "-snapshot." . substr($reportName, $lastDotPos + 1);
+    }
+
     // Saving the exported file in the 'reports' folder
     $reportPath = "../reports/$reportName";
     file_put_contents($reportPath, base64_decode($args->data));
