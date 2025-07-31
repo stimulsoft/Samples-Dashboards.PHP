@@ -123,7 +123,7 @@ class StiExportFormat
     /**
      * Returns the file extension for the selected export format.
      */
-    public static function getFileExtension(int $format, ?StiExportSettings $settings = null, int $reportType = StiReportType::Auto): string
+    public static function getFileExtension(int $format, ?StiExportSettings $settings = null): string
     {
         $format = self::getCorrectExportFormat($format);
         $compressToArchive = $settings instanceof StiImageExportSettings && $settings->compressToArchive;
@@ -148,7 +148,7 @@ class StiExportFormat
                 return 'jpg';
 
             case StiExportFormat::Document:
-                return $reportType == StiReportType::Dashboard ? 'mrt' : 'mdc';
+                return 'mdc';
         }
 
         return $compressToArchive ? 'zip' : strtolower(str_replace('Image', '', StiExportFormat::getFormatName($format)));
