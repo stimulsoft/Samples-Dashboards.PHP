@@ -21,6 +21,9 @@ class StiPdfDashboardExportSettings extends StiDashboardExportSettings
     /** @var int The image quality of images which will be exported to a result file. */
     public $imageQuality = 200;
 
+    /** @var int The scale of an exported document. */
+    public $scale = 100;
+
     /** @var PaperKind|int [enum] The page size of a resulting document. */
     public $paperSize = PaperKind::A4;
 
